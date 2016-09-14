@@ -1,0 +1,29 @@
+//compound where condition
+select topic, count(ISBN) from books where topic in (select topic from categories) group by topic;
+
+//nested query & group-by
+select a.topic, count(a.ISBN) from cart, (select ISBN, books.topic from books, categories where books.topic = categories.topic) a where cart.ISBN = a.ISBN group by a.topic;
+
+// count
+select count(uid) from users;
+
+// join
+select books.ISBN from books,cart where cart.uid = ? and cart.ISBN = books.ISBN and books.ISBN = ? and books.booknumber >= cart.number
+
+//question type
+select * from users where uid = ? and password = ?
+
+select * from cart where uid = ?
+
+select * from users where uid = ?
+
+select * from books where ISBN like '%" + isbn + "%' and bookname like " + "'%" + bookname + 
+						"%' and topic like " + "'%" + topic + "%' and price between "+ lowp + " and "+highp + "order by price desc";
+						
+						
+select * from books where ISBN like '%" + isbn + "%' and bookname like " + "'%" + bookname + 
+					"%' and topic like " + "'%" + topic + "%' and price > "+ lowp + "order by price";
+
+select * from books where bookname = ?
+
+select * from cart where ISBN = ? and uid = ?
